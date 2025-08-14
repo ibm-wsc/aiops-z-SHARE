@@ -307,7 +307,7 @@
   
   
   <span class="md-ellipsis">
-    Lab Architecture
+    Lab Environment
     
   </span>
   
@@ -419,7 +419,7 @@
         <li class="md-nav__item">
   <a href="#workshop-architecture" class="md-nav__link">
     <span class="md-ellipsis">
-      4 Lab Architecture
+      4 Lab Environment
     </span>
   </a>
   
@@ -496,7 +496,7 @@
         <li class="md-nav__item">
   <a href="#workshop-architecture" class="md-nav__link">
     <span class="md-ellipsis">
-      4 Lab Architecture
+      4 Lab Environment
     </span>
   </a>
   
@@ -776,8 +776,8 @@
 <td><code>p@ssw0rd</code></td>
 </tr>
 </tbody>
-</table></section><section class="print-page" id="workshop-architecture" heading-number="4"><h1 id="workshop-architecture-workshop-architecture-diagram">Workshop Architecture Diagram<a class="headerlink" href="#workshop-architecture-workshop-architecture-diagram" title="Permanent link">&para;</a></h1>
-<p><img alt="workshop-arch" src="../images/aiops-arch-AIOps-workshop.drawio.png" /></p></section><section class="print-page" id="labs-share-lab" heading-number="5"><h1 id="labs-share-lab-aiops-with-ibm-z-and-linuxone">AIOps with IBM Z and LinuxONE<a class="headerlink" href="#labs-share-lab-aiops-with-ibm-z-and-linuxone" title="Permanent link">&para;</a></h1>
+</table></section><section class="print-page" id="workshop-architecture" heading-number="4"><h1 id="workshop-architecture-lab-environment-diagram">Lab Environment Diagram<a class="headerlink" href="#workshop-architecture-lab-environment-diagram" title="Permanent link">&para;</a></h1>
+<p><img alt="workshop-arch" src="../images/Cleveland3.drawio.png" /></p></section><section class="print-page" id="labs-share-lab" heading-number="5"><h1 id="labs-share-lab-aiops-with-ibm-z-and-linuxone">AIOps with IBM Z and LinuxONE<a class="headerlink" href="#labs-share-lab-aiops-with-ibm-z-and-linuxone" title="Permanent link">&para;</a></h1>
 <p>In this lab, you will become familiar with two of IBM's strategic AIOps solutions - Instana, and Cloud Pak for AIOps - and the capabilities they have to monitor and manage IBM Z applications and infrastructure.</p>
 <p>You will work with a simple application and see how Instana observes it.
 You will then purposely introduce an error into the application and see how Cloud Pak for AIOps receives an event from Instana concerning the error, turns that event into an alert, and then promotes that alert to an incident.
@@ -788,9 +788,8 @@ You will then use a Cloud Pak for AIOps automation runbook attached to the incid
 <p>Today's lab instances will be available until Friday morning if you wish to explore deeper later. Alternatively, contact the <a href="mailto:silliman@us.ibm.com">lab owner</a> if you would like to do a longer lab (two to four hours) that goes into more depth. In addition, there will be additional resources listed at the end of these instructions for you to check out if you are interested in learning more about these products.</p>
 </div>
 <h2 id="labs-share-lab-environment-overview">Environment Overview<a class="headerlink" href="#labs-share-lab-environment-overview" title="Permanent link">&para;</a></h2>
-<p>Our lab environment looks like this.
-Today's lab uses the components that are circled.</p>
-<p><img alt="aiops-arch" src="../images/aiops-arch-AIOps-workshop.drawio.png" /></p>
+<p>Our lab environment looks like this. All of these systems are running with the IBM Washington System Center's data center in Herndon, Virginia, US. You will use the the web-based console for three different products:  Red Hat OpenShift Container Platform (OCP), Instana, and Cloud Pak for AIOps.</p>
+<p><img alt="aiops-arch" src="../images/Cleveland3.drawio.png" /></p>
 <h2 id="labs-share-lab-connecting-to-the-lab-environment">Connecting to the Lab Environment<a class="headerlink" href="#labs-share-lab-connecting-to-the-lab-environment" title="Permanent link">&para;</a></h2>
 <p>It is assumed you have already signed into <em>IBM Technology Zone</em> and been assigned a Windows workstation lab environment and have logged into Windows.
 Visit the <a href="#techzone-access" target="wsc_techzoneaccess">TechZone Environment Access Page</a> if you haven't done this yet.</p>
@@ -859,7 +858,7 @@ In other words, a very simple <em>CRUD</em> (Create, Read, Update, Delete) appli
 <li>
 <p>Within your Topology view, <strong>Open the Fruit web application by clicking the small button in the top right of the <code>nodejs-usernn</code> icon.</strong></p>
 <p><img alt="fruit-route" src="../images/fruit-route.png" /></p>
-<p>This is simply a hyperlink that will take you to the Fruit application web page. Those services that are intended to be accessible externally, from outside the OCP cluster- perhaps another program running outside the OCP cluster, or perhaps by a human, like you, sitting in front of a browser-  have <em>routes</em> defined to allow this external access.  An external URL is associated with a route, and the hyperlink you clicked invoked this URL. Notice that there is not a hyperlink for the <em>postgresql-usernn</em> deployment.  That is because this is the backend that is intended to only be accessbile by the frontend- it is not intended to be directly accessible by an external user.</p>
+<p>This is simply a hyperlink that will take you to the Fruit application web page. Those services that are intended to be accessible externally, from outside the OCP cluster- perhaps by another program running outside the OCP cluster, or perhaps by a human, like you, sitting in front of a browser-  have <em>routes</em> defined to allow this external access.  An external URL is associated with a route, and the hyperlink you clicked invoked this URL. Notice that there is not a hyperlink for the <em>postgresql-usernn</em> deployment.  That is because this is the backend that is intended to only be accessbile by the frontend- it is not intended to be directly accessible by an external user.</p>
 <p>The Fruit application should appear like the screenshot below. It starts out with a sample fruit inventory.</p>
 <p><img alt="fruit-1" src="../images/fruit-1.png" /></p>
 <p>You'll get a chance to play with the application in a moment, but first let's get logged in to Instana.</p>
@@ -959,7 +958,7 @@ First let's look for it in the Instana Console.</p>
 <p>Now that you're getting live data, <strong>click on the button that says 'Last hour' and choose the option 'Last 5 minutes'</strong>.</p>
 <p>When done, the two widgets to control the time interval and whether you're getting live data should look similar to what is in the below screen snippet:</p>
 <p><img alt="instana-application-last5" src="../images/instana-application-last5.png" /></p>
-<p>The reason we had you change to showing only the last 5 minutes was so that it is easier to see the activity flow in the various graphs on the application page.
+<p>The reason we had you change to showing only the last 5 minutes was so that it would be easier to see the activity flow in the various graphs on the application page.
 For example, look at the <em>Calls per second</em> graph and you will notice the bars moving from right to left.
 Within the front-end code for the <em>Fruit</em> application, there is a call being made periodically.</p>
 </li>
@@ -1185,7 +1184,7 @@ Also, coming from the Instana integration will be the Instana event that Cloud P
 <li><strong>(3)</strong> <em>Assignees</em> - you can either manually assign incidents to team members to resolve, or Cloud Pak for AIOps can assign people or teams automatically if a policy is configured to do so. Our lab's policy does not assign this incident to anyone.</li>
 <li><strong>(4)</strong> <em>Impacted Applications</em> - any business applications that Cloud Pak for AIOps identifies as impacted by the incident</li>
 <li><strong>(5)</strong> <em>Source</em> - this lists the policy that promoted an alert to an incident. You looked at this policy a few minutes ago in the lab.</li>
-<li><strong>(6)</strong> <em>Runbooks for selected alert</em> - an alert can have a runbook assigned to it by a policy. <em>Note:</em> Although not covered in this lab, Cloud Pak for AIOps can also suggest, based on how it is has been trained in its machine learning algorithms, recommended runbooks for remediating incidents.</li>
+<li><strong>(6)</strong> <em>Runbooks for selected alert</em> - an alert can have a runbook assigned to it by a policy. <em>Note:</em> Although not covered in this lab, Cloud Pak for AIOps can also suggest, based on how it has been trained in its machine learning algorithms, recommended runbooks for remediating incidents.</li>
 <li><strong>(7)</strong> In addition to the policy that promoted an alert to an incident, a different policy, listed here and named <em>Assign runbook to userNN postgresql incident</em>, was used to assign a runbook to the alert.  That is, the policy listed in <em>(5)</em> in this list is what caused Cloud Pak for AIOps to create an incident from the alert, but it was the policy listed here in <em>(7)</em> that suggested a runbook for the alert.</li>
 </ul>
 </li>
@@ -1271,7 +1270,7 @@ Also, coming from the Instana integration will be the Instana event that Cloud P
 <p>If the output of <em>Step 4</em> includes the response <em>POSTGRESQL_DATABASE=my_data-usernn</em>, like in the screen shot below, then the application issue should be fixed.</p>
 <p><img alt="runbook-completeb" src="../images/runbook-completeb.png" /></p>
 <p>Since it is the last step in the Runbook, at the end of <em>Step 4: Check userNN postgresql environment variable</em>, you will have a <em>Complete</em> button to click instead of a <em>Next Step</em> button. </p>
-<p>You can give the runbook a 1-5 star rating, leave a comment, and mark that it worked. This feature allows to provide feedback to the automation engineers and AI algorithms so that the runbook can be improved.</p>
+<p>You can give the runbook a 1-5 star rating, leave a comment, and mark that it worked. This feature allows users to provide feedback to the automation engineers and AI algorithms so that the runbook can be improved.</p>
 </li>
 <li>
 <p>Go back to your browser tab that has the error page for your <em>Fruit</em> application and <strong>Click the reload icon</strong>. Now that the problem has been fixed, you should see your application again:</p>
