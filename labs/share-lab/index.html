@@ -1,0 +1,1501 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://ibm-wsc.github.io/aiops-z-SHARE/labs/share-lab/">
+      
+      
+        <link rel="prev" href="../../workshop-architecture/">
+      
+      
+      
+      <link rel="icon" href="../../images/CP4AIOps-logo.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+    
+    
+      
+        <title>Lab - AIOps with IBM Z and LinuxONE</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2afb09e1.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/print-site.css">
+    
+      <link rel="stylesheet" href="../../css/print-site-material.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#aiops-with-ibm-z-and-linuxone" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="AIOps with IBM Z and LinuxONE" class="md-header__button md-logo" aria-label="AIOps with IBM Z and LinuxONE" data-md-component="logo">
+      
+  <img src="../../images/CP4AIOps-logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AIOps with IBM Z and LinuxONE
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lab
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ibm-wsc/aiops-z-SHARE/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="AIOps with IBM Z and LinuxONE" class="md-nav__button md-logo" aria-label="AIOps with IBM Z and LinuxONE" data-md-component="logo">
+      
+  <img src="../../images/CP4AIOps-logo.svg" alt="logo">
+
+    </a>
+    AIOps with IBM Z and LinuxONE
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ibm-wsc/aiops-z-SHARE/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../techzone-access/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    TechZone Environment Access
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../console-access/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab Consoles Access
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../workshop-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab Architecture
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Lab
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#environment-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Environment Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connecting-to-the-lab-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connecting to the Lab Environment
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instana" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instana
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Instana">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overview-of-instana-observability" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview of Instana Observability
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log-in-to-the-red-hat-openshift-container-platform-web-console" class="md-nav__link">
+    <span class="md-ellipsis">
+      Log in to the Red Hat OpenShift Container Platform web console
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-the-instana-agent-on-openshift" class="md-nav__link">
+    <span class="md-ellipsis">
+      Viewing the Instana Agent on OpenShift
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-the-sample-application-on-openshift" class="md-nav__link">
+    <span class="md-ellipsis">
+      Viewing the sample application on OpenShift
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#navigating-the-instana-web-console" class="md-nav__link">
+    <span class="md-ellipsis">
+      Navigating the Instana web console
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-your-sample-application-in-instana" class="md-nav__link">
+    <span class="md-ellipsis">
+      Viewing your sample application in Instana
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-your-sample-application-and-verify-activity-is-being-monitored-by-instana" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use your sample application and verify activity is being monitored by Instana
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instana-recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instana recap
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ibm-cloud-pak-for-aiops" class="md-nav__link">
+    <span class="md-ellipsis">
+      IBM Cloud Pak for AIOps
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="IBM Cloud Pak for AIOps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#introduce-an-error-into-your-fruit-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduce an Error into your Fruit application
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exploring-the-cloud-pak-for-aiops-console" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exploring the Cloud Pak for AIOps Console
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exploring the Cloud Pak for AIOps Console">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aiops-insights" class="md-nav__link">
+    <span class="md-ellipsis">
+      AIOps Insights
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integrations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integrations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resource-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resource Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#automations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Automations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixing-the-error-in-your-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fixing the error in your application
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ai-model-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      AI Model Management
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wrapping-up" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wrapping Up
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../print_page/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Print Site
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#environment-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Environment Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connecting-to-the-lab-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connecting to the Lab Environment
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instana" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instana
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Instana">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overview-of-instana-observability" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview of Instana Observability
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log-in-to-the-red-hat-openshift-container-platform-web-console" class="md-nav__link">
+    <span class="md-ellipsis">
+      Log in to the Red Hat OpenShift Container Platform web console
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-the-instana-agent-on-openshift" class="md-nav__link">
+    <span class="md-ellipsis">
+      Viewing the Instana Agent on OpenShift
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-the-sample-application-on-openshift" class="md-nav__link">
+    <span class="md-ellipsis">
+      Viewing the sample application on OpenShift
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#navigating-the-instana-web-console" class="md-nav__link">
+    <span class="md-ellipsis">
+      Navigating the Instana web console
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-your-sample-application-in-instana" class="md-nav__link">
+    <span class="md-ellipsis">
+      Viewing your sample application in Instana
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-your-sample-application-and-verify-activity-is-being-monitored-by-instana" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use your sample application and verify activity is being monitored by Instana
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instana-recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instana recap
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ibm-cloud-pak-for-aiops" class="md-nav__link">
+    <span class="md-ellipsis">
+      IBM Cloud Pak for AIOps
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="IBM Cloud Pak for AIOps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#introduce-an-error-into-your-fruit-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduce an Error into your Fruit application
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exploring-the-cloud-pak-for-aiops-console" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exploring the Cloud Pak for AIOps Console
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exploring the Cloud Pak for AIOps Console">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aiops-insights" class="md-nav__link">
+    <span class="md-ellipsis">
+      AIOps Insights
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integrations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integrations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resource-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resource Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#automations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Automations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixing-the-error-in-your-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fixing the error in your application
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ai-model-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      AI Model Management
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wrapping-up" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wrapping Up
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="aiops-with-ibm-z-and-linuxone">AIOps with IBM Z and LinuxONE<a class="headerlink" href="#aiops-with-ibm-z-and-linuxone" title="Permanent link">&para;</a></h1>
+<p>In this lab, you will become familiar with two of IBM's strategic AIOps solutions - Instana, and Cloud Pak for AIOps - and the capabilities they have to monitor and manage IBM Z applications and infrastructure.</p>
+<p>You will work with a simple application and see how Instana observes it.
+You will then purposely introduce an error into the application and see how Cloud Pak for AIOps receives an event from Instana concerning the error, turns that event into an alert, and then promotes that alert to an incident.
+You will then use a Cloud Pak for AIOps automation runbook attached to the incident to resolve the error.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>In the time allotted for this lab, we will just scratch the surface of the features and capabilities of <em>Instana</em> and <em>Cloud Pak for AIOps</em>. As you navigate through the various screens when using the two products, you may see many tabs or links or widgets that are just begging you to click them and check them out. Try to resist the temptation to stray beyond what is explicitly instructed in these lab instructions, or it will be very difficult to finish the lab in the allotted time. </p>
+<p>Today's lab instances will be available until Friday morning if you wish to explore deeper later. Alternatively, contact the <a href="mailto:silliman@us.ibm.com">lab owner</a> if you would like to do a longer lab (two to four hours) that goes into more depth. In addition, there will be additional resources listed at the end of these instructions for you to check out if you are interested in learning more about these products.</p>
+</div>
+<h2 id="environment-overview">Environment Overview<a class="headerlink" href="#environment-overview" title="Permanent link">&para;</a></h2>
+<p>Our lab environment looks like this.
+Today's lab uses the components that are circled.</p>
+<p><img alt="aiops-arch" src="../../images/aiops-arch-AIOps-workshop.drawio.png" /></p>
+<h2 id="connecting-to-the-lab-environment">Connecting to the Lab Environment<a class="headerlink" href="#connecting-to-the-lab-environment" title="Permanent link">&para;</a></h2>
+<p>It is assumed you have already signed into <em>IBM Technology Zone</em> and been assigned a Windows workstation lab environment and have logged into Windows.
+Visit the <a href="../../techzone-access/" target="wsc_techzoneaccess">TechZone Environment Access Page</a> if you haven't done this yet.</p>
+<p>You were assigned a unique environment id, from 1 to 20.
+In the lab you will be accessing various consoles, and you must use <em>usernn</em> where <em>nn</em> matches your environment id.
+(The <em>nn</em> in <em>usernn</em> is always two digits, so, e.g., if you have environment 2, then you will use <em>user02</em> throughout the lab, not <em>user2</em>.)</p>
+<p>Console URLs and credentials used in the lab are listed on the <a href="../../console-access/" target="wsc_envaccess">Lab Consoles Access page</a>.
+You probably won't have to visit this page too often as all of the consoles that you will log into will use the same userid (your unique <em>usernn</em>) and password, but it won't hurt to keep it open in a browser tab.</p>
+<h2 id="instana">Instana<a class="headerlink" href="#instana" title="Permanent link">&para;</a></h2>
+<h3 id="overview-of-instana-observability">Overview of Instana Observability<a class="headerlink" href="#overview-of-instana-observability" title="Permanent link">&para;</a></h3>
+<p>Instana is an enterprise observability solution that offers application performance management - no matter where the application or infrastructure resides. Instana can monitor both containerized and traditional applications, various infrastructure types including OpenShift, public clouds &amp; other containerization platforms, native Linux, z/OS, websites, databases, and more. The current list of supported technologies can be found <a href="https://www.ibm.com/docs/en/instana-observability/current?topic=configuring-monitoring-supported-technologies" target="wsc_instanadoc">in the Instana documentation</a>.</p>
+<h3 id="log-in-to-the-red-hat-openshift-container-platform-web-console">Log in to the Red Hat OpenShift Container Platform web console<a class="headerlink" href="#log-in-to-the-red-hat-openshift-container-platform-web-console" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><strong>Open the Red Hat OpenShift Container Platform web console</strong> at <a href="https://console-openshift-console.apps.atsocpd1.dmz" target="wsc_ocpconsole">https://console-openshift-console.apps.atsocpd1.dmz</a></p>
+<div class="admonition note">
+<p class="admonition-title">A note on abbreviations</p>
+<p>For the sake of brevity, we may refer to Red Hat OpenShift Container Platform as either <em>OpenShift</em> or <em>OCP</em> throughout this lab.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Click through any warnings</p>
+<p>Our lab environments use self-signed certificates, so click through any browser warnings that might arise as a result.  </p>
+</div>
+<p>You should now see the OpenShift console login page.</p>
+<p><img alt="openshift-console-login" src="../../images/openshift-console-login.png" /></p>
+</li>
+<li>
+<p><strong>Log in to OCP with your credentials.</strong> Your userid will be <em>usernn</em> where <em>nn</em> is the unique number assigned to you, and your password will be in the table in the <a href="../../access/#openshift-instana-turbonomic-and-cp4aiops-credentials" target="wsc_envaccess">Lab Consoles Access page</a>.</p>
+</li>
+</ol>
+<h3 id="viewing-the-instana-agent-on-openshift">Viewing the Instana Agent on OpenShift<a class="headerlink" href="#viewing-the-instana-agent-on-openshift" title="Permanent link">&para;</a></h3>
+<p>Instana collects information about OpenShift Container Platform by means of an agent provided by Instana that is installed on the OCP cluster.
+In this section you will view information about the Instana agent from the OCP Console.</p>
+<ol>
+<li>
+<p>In the OpenShift console, <strong>navigate to the <code>instana-agent</code> project (1) then click the circular icon on the Topology page that is labeled <code>instana-agent</code> (2).</strong> </p>
+<p><img alt="instana-agent-daemonset" src="../../images/instana-agent-daemonset.png" /></p>
+<p>This is the Instana agent that is collecting all the information about the containerized applications running on OpenShift and sending that information to the Instana server.</p>
+<p>The agent is deployed as a <a href="https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/" target="wsc_kubedocs">DaemonSet</a>, which is a Kubernetes object that ensures one copy of the pod runs on each compute node in the cluster. Each individual Instana agent pod is responsible for the data and metrics collection for the applications running on its compute node.</p>
+<p>The agent introspects the cluster, and based on the technologies it detects, it deploys the appropriate <em>sensors</em> for the technologies that it finds.</p>
+</li>
+<li>
+<p><strong>Click the other circular icon on the Topology page (1), the one that is labeled <code>instana-agent-k8sensor</code>.</strong>  A sidebar will appear (2) with more information. </p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Underneath the circular icon it is probable that the full name <code>instana-agent-k8sensor</code> is not shown in the UI unless you hover your cursor over the name.</p>
+</div>
+<p><img alt="k8sensor-deployment" src="../../images/k8sensor-deployment.png" /></p>
+<p>The <code>instana-agent-k8sensor</code> pods are where the sensors deployed by the agent run.  The sensors are responsible for gathering information about the OpenShift cluster itself and all of the Kubernetes objects it includes - pods, namespaces, routes, etc., and sending that information to the agent which then sends it to the Instana backend server.</p>
+</li>
+</ol>
+<h3 id="viewing-the-sample-application-on-openshift">Viewing the sample application on OpenShift<a class="headerlink" href="#viewing-the-sample-application-on-openshift" title="Permanent link">&para;</a></h3>
+<p>You will work with your own instance of a sample application that runs in OpenShift.
+This application has a web frontend built with Node.js, and a PostgreSQL database on the backend.
+In this section you will view the application in the OpenShift Console.</p>
+<ol>
+<li>
+<p><strong>Under the Developer perspective (1), navigate to the Topology page (2) for the <code>usernn-project</code> project, where <em>nn</em> is your unique id (3).</strong>  </p>
+<p><img alt="fruit-topology" src="../../images/fruit-topology.png" /></p>
+<p>Your project has a very simple sample application that we'll call the <em>Fruit</em> application.
+This application stores an inventory of fruit in a Postgresql database running in a pod whose name starts with <em>postgresql-usernn</em>.
+The application serves a web page with a Node.js application running in a pod whose name starts with <em>nodejs-usernn</em>.
+The web page allows you to view the fruit inventory and to modify it by adding fruits to the inventory, changing the quantity of a fruit in the inventory, and deleting a fruit from the inventory.
+In other words, a very simple <em>CRUD</em> (Create, Read, Update, Delete) application.</p>
+</li>
+<li>
+<p>Within your Topology view, <strong>Open the Fruit web application by clicking the small button in the top right of the <code>nodejs-usernn</code> icon.</strong></p>
+<p><img alt="fruit-route" src="../../images/fruit-route.png" /></p>
+<p>This is simply a hyperlink that will take you to the Fruit application web page. Those services that are intended to be accessible externally, from outside the OCP cluster- perhaps another program running outside the OCP cluster, or perhaps by a human, like you, sitting in front of a browser-  have <em>routes</em> defined to allow this external access.  An external URL is associated with a route, and the hyperlink you clicked invoked this URL. Notice that there is not a hyperlink for the <em>postgresql-usernn</em> deployment.  That is because this is the backend that is intended to only be accessbile by the frontend- it is not intended to be directly accessible by an external user.</p>
+<p>The Fruit application should appear like the screenshot below. It starts out with a sample fruit inventory.</p>
+<p><img alt="fruit-1" src="../../images/fruit-1.png" /></p>
+<p>You'll get a chance to play with the application in a moment, but first let's get logged in to Instana.</p>
+</li>
+</ol>
+<h3 id="navigating-the-instana-web-console">Navigating the Instana web console<a class="headerlink" href="#navigating-the-instana-web-console" title="Permanent link">&para;</a></h3>
+<p>In this section we'll get you logged in to the Instana console UI, and give you a brief tour of some of the options available from the Instana console.
+Then we'll focus on how you can observe your Fruit application from the Instana console.</p>
+<ol>
+<li>
+<p><strong>Open the web console of the Instana server at <a href="https://unit0-wsc.lcsins01.dmz" target="wsc_instanaui">https://unit0-wsc.lcsins01.dmz</a>.</strong> </p>
+</li>
+<li>
+<p><strong>Log in to Instana with your credentials- yep, <em>usernn</em> and that tricky password that you've already used.</strong></p>
+<p>When you first log in to Instana, you will be taken to the Home Page. This is a customizable summary page that shows the key metrics for selected components of your environment in the timeframe specified in the top right of the screen.
+We don't really use the Home Page in the lab and we haven't customized it, so we're going to use the left-side panel menu to look at things.</p>
+</li>
+<li>
+<p><strong>Hover (click if necessary) over the left-side panel so the menu appears.</strong></p>
+<p>You hopefully see a vertical row of icons at the left side of the Console.
+If you hover your mouse anywhere on this vertical row then it should expand to show the names of the menu items, similar to the below screen snippet:</p>
+<p><img alt="instana-menu" src="../../images/instana-menu.png" /></p>
+<p>We'll go through some of these menu items now.</p>
+<p>First, you'll take a look at Instana's Kubernetes monitoring capabilities. </p>
+</li>
+<li>
+<p><strong>Click the Platforms -&gt; Kubernetes option in the left side menu.</strong></p>
+<p>You should see a screen similar to below, which is called the <em>card</em> view.
+You can toggle between <em>card</em> view and <em>list</em> view by clicking the widget highlighted (1) in the screen snippet:</p>
+<p><img alt="instana-kubernetes" src="../../images/instana-kubernetes-card.png" /></p>
+</li>
+<li>
+<p><strong>Toggle to list view</strong></p>
+<p>You should see a screen similar to this:</p>
+<p><img alt="instana-kubernetes" src="../../images/instana-kubernetes.png" /></p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p><em>atsocpd1</em> is an OCP cluster running on an IBM z16 in the Washington Systems Center data center in Herndon, Virginia, USA.  The <em>Fruit</em> application that you are working with in this lab runs on this cluster.</p>
+<p><em>atsocpd3</em> is another OCP cluster running on the same IBM z16 as <em>atsocpd1</em>. The Instana agent is installed on it also, which is why you see it listed here, but this cluster is not used in the lab.</p>
+<p><em>instana</em> is the Instana server itself, which has been installed as a <a href="https://www.ibm.com/docs/en/instana-observability/current?topic=backend-installing-standard-edition" target="wsc_instanadoc">Self-hosted Standard Edition single-node cluster</a> on a server with the <em>x86_64</em> architecture.  </p>
+</div>
+</li>
+<li>
+<p><strong>Click the <em>atsocpd1</em>  hyperlink in the <em>Names</em> column.</strong></p>
+<p>You should see a screen that looks like this:</p>
+<p><img alt="instana-openshift" src="../../images/instana-openshift.png" /></p>
+<p>The <em>Summary</em> page shows the most relevant information for the cluster as a whole. The CPU, Memory, and Pod usage information are shown. The other sections, such as "Top Nodes" and "Top Deployments", show potential hotspots which you might want to have a look at.</p>
+</li>
+<li>
+<p><strong>From the left-side menu, expand <em>Platforms</em> and then click <em>IBM Z HMC</em>.</strong></p>
+<p>You should see something like this:</p>
+<p><img alt="instana-zhmc-1" src="../../images/instana-zhmc-1.png" /></p>
+<p>Instana supports monitoring IBM Z and LinuxONE hardware metrics and messages via the <a href="https://www.ibm.com/docs/en/instana-observability/current?topic=technologies-monitoring-z-hmc" target="wsc_instanadoc">IBM Z Hardware Management Console</a>, or <em>HMC</em>. </p>
+<p>In the Instana console (and in the screenshot above), you should see two separate HMCs. <em>hsyshma1.dmz</em> is managing a single DPM-mode IBM Z machine, while <em>wschmc.dmz</em> is managing three classic-mode (i.e., PR/SM) IBM Z machines.</p>
+</li>
+<li>
+<p><strong>Click the hyperlink for <em>wschmc.dmz</em></strong></p>
+<p>You will then see a screen like this:</p>
+<p><img alt="instana-zhmc-2b" src="../../images/instana-zhmc-2b.png" /></p>
+<p>This page shows you high level information about the IBM Z or LinuxONE machines themselves, including number of partitions, adapters, IP addresses, Machine Type Models and Machine Serial numbers.</p>
+<details class="question">
+<summary>Which system is a z14, which is a z15, and which is a z16? Click to reveal the answer.</summary>
+<ul>
+<li>QSYS: <strong>z14</strong> (machine type 3906)   Note: we recently decommissioned our z14, which is why Instana says it is not communicating</li>
+<li>FSYS: <strong>z15</strong> (machine type 8561)</li>
+<li>KSYS: <strong>z16</strong> (machine type 3931)</li>
+</ul>
+</details>
+<p>You may notice that there are only a small number of partitions and adapters listed for each system. This is due to the fact that Instana only displays the objects (LPARs, adapters, channels, etc) that a specific zHMC userid has access to. If you want to add or remove visibility to certain objects in Instana, you do so by managing the zHMC userid just as system administrators already do.</p>
+</li>
+<li>
+<p><strong>Click the hyperlink for <em>KSYS</em></strong></p>
+<p>This is the z16 on which the OCP clusters run.</p>
+<p><img alt="instana-zhmc-3" src="../../images/instana-zhmc-3.png" /></p>
+<p>You can now see the overall system utilization as well as that of individual processors. </p>
+</li>
+</ol>
+<h3 id="viewing-your-sample-application-in-instana">Viewing your sample application in Instana<a class="headerlink" href="#viewing-your-sample-application-in-instana" title="Permanent link">&para;</a></h3>
+<p>Let's return now to your sample Fruit application.
+First let's look for it in the Instana Console.</p>
+<ol>
+<li>
+<p><strong>From the left-side menu, choose <em>Applications</em></strong></p>
+<p>You should see a page similar to this:</p>
+<p><img alt="instana-applications" src="../../images/instana-applications.png" /></p>
+</li>
+<li>
+<p><strong>Find your <em>usernn-project</em> in the <em>Name</em> column in the list of applications and select it.</strong></p>
+<p>There are about 24 applications being monitored by our lab's Instana and the list only shows 20 by default, so use the search bar at the top of the list or scroll to the next page at the bottom of the list if you have to in order to find your unique <em>usernn-project</em>.</p>
+<p>You'll see a page like this:</p>
+<p><img alt="instana-application-usernn" src="../../images/instana-application-usernn.png" /></p>
+</li>
+<li>
+<p>Notice in the above screen shot, in the upper right, there is a box that says "Aug 07 Last hour" and a box next to it that says "Live" with a triangle icon.</p>
+<p>The icon in the "Live" box is a triangle when the screen is not automatically being updated with live data as time marches on.
+<strong>If the icon in the "Live" box is a triangle, click it</strong>, and the button will now change to have a square icon in the "Live" box, and now the screen updates with live data.</p>
+<p>Now that you're getting live data, <strong>click on the button that says 'Last hour' and choose the option 'Last 5 minutes'</strong>.</p>
+<p>When done, the two widgets to control the time interval and whether you're getting live data should look similar to what is in the below screen snippet:</p>
+<p><img alt="instana-application-last5" src="../../images/instana-application-last5.png" /></p>
+<p>The reason we had you change to showing only the last 5 minutes was so that it is easier to see the activity flow in the various graphs on the application page.
+For example, look at the <em>Calls per second</em> graph and you will notice the bars moving from right to left.
+Within the front-end code for the <em>Fruit</em> application, there is a call being made periodically.</p>
+</li>
+</ol>
+<h3 id="use-your-sample-application-and-verify-activity-is-being-monitored-by-instana">Use your sample application and verify activity is being monitored by Instana<a class="headerlink" href="#use-your-sample-application-and-verify-activity-is-being-monitored-by-instana" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><strong>Go back to the browser tab that has the <em>Fruit</em> application in it.
+   Spend about a minute performing some transactions</strong>- you could add inventory for a new fruit, change the inventory for existing fruits, or even delete a fruit from the inventory.</p>
+<p>Here's an example screen snippet where bananas were added to the inventory, the quantity for oranges was modified, and pears were removed from the inventory:</p>
+<p><img alt="instana-fruit-activity" src="../../images/instana-fruit-activity.png" /></p>
+</li>
+<li>
+<p><strong>Switch back to the broswer tab for the Instana console UI</strong>. 
+    You should be able to detect the activity from your transactions.
+    In the screen snippet below, you can see that several transactions were performed in the last couple of minutes:</p>
+<p><img alt="instana-application-activity" src="../../images/instana-application-activity.png" /></p>
+</li>
+</ol>
+<h3 id="instana-recap">Instana recap<a class="headerlink" href="#instana-recap" title="Permanent link">&para;</a></h3>
+<p>You've seen that Instana can observe hardware information from the Z HMC, container platform-level information from Kubernetes and OpenShift, and application-level information.
+We only gave you a small sample today.</p>
+<h2 id="ibm-cloud-pak-for-aiops">IBM Cloud Pak for AIOps<a class="headerlink" href="#ibm-cloud-pak-for-aiops" title="Permanent link">&para;</a></h2>
+<p>In this part of the lab you will intentionally break the Fruit application.
+Then you'll use IBM Cloud Pak for AIOps to resolve the problem.</p>
+<p>Here is a simplified description of what's going on in the rest of the lab:</p>
+<ol>
+<li>
+<p>The Instana agent running in the OpenShift cluster detects a problem with the Fruit application's deployment and sends a message to the Instana backend server</p>
+</li>
+<li>
+<p>Cloud Pak for AIOps receives an event about this from the Instana backend server</p>
+</li>
+<li>
+<p>Cloud Pak for AIOps creates an alert based on this event</p>
+</li>
+<li>
+<p>A user-written policy in Cloud Pak for AIOps inspects the alert and attaches a runbook to it which is designed to correct the problem</p>
+</li>
+<li>
+<p>Another user-written policy in Cloud Pak for AIOPs inspects the alert and promotes the alert to an incident</p>
+</li>
+<li>
+<p>You will use the recommend runbook to correct the problem</p>
+</li>
+</ol>
+<h3 id="introduce-an-error-into-your-fruit-application">Introduce an Error into your Fruit application<a class="headerlink" href="#introduce-an-error-into-your-fruit-application" title="Permanent link">&para;</a></h3>
+<p>In this section, you will break your sample application via the OCP console UI.</p>
+<ol>
+<li>
+<p><strong>In the OpenShift console, under the developer perspective, navigate to your <em>usernn-project</em> namespace topology (1), click the Postgresql icon (2), and then click the <em>postgresql-userNN</em> deployment hyperlink (3).</strong></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You probably still have your OpenShift Web Console tab open.  If not, you can find the URL again on the <a href="../../console-access/" target="wsc_envaccess">Environment Access</a> page.</p>
+</div>
+<p><img alt="ocp-postgresql" src="../../images/ocp-postgresql.png" /></p>
+</li>
+<li>
+<p><strong>Under the <em>Environment</em> tab (1), change the value for <em>POSTGRESQL_DATABASE</em> from <em>my_data-usernn</em> to <em>my_data-usernn-error</em> (2). Click <em>Save</em> at the bottom of the page.</strong>  (<em>Save</em> button is not shown on the below screen snippet.)</p>
+<p><img alt="ocp-postgresql2" src="../../images/ocp-postgresql2b.png" /></p>
+<p>You've broken the application because the frontend expects the database name to be <em>my_data-usernn</em> and you reconfigured the backend to use a database name of <em>my_data-usernn-error</em>.</p>
+</li>
+<li>
+<p><strong>Go back to your <em>Fruit</em> application browser tab and reload the page with the browser tab's reload button:</strong></p>
+<p><img alt="fruit-reload" src="../../images/fruit-reload.png" /></p>
+</li>
+<li>
+<p>You should receive an error page similar to the screen snippet that follow the below tip:</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If you do not see the error page at first, click the reload icon on the browser tab every few seconds until you see the error message shown below.</p>
+</div>
+<p><img alt="app-broken2" src="../../images/app-broken2.png" /></p>
+</li>
+</ol>
+<h3 id="exploring-the-cloud-pak-for-aiops-console">Exploring the Cloud Pak for AIOps Console<a class="headerlink" href="#exploring-the-cloud-pak-for-aiops-console" title="Permanent link">&para;</a></h3>
+<p>There is a gap of a few minutes between the time the Instana agent detects the problem, the Instana server learns about it, and Cloud Pak for AIOPs learns about it and turns it into an alert and then an incident.
+Let's explore the Cloud Pak for AIOPs a bit and by then the incident should be created.</p>
+<ol>
+<li>
+<p><strong>Navigate to your IBM Cloud Pak for AIOps dashboard at <a href="https://cpd-cp4aiops.apps.ocpaocp.dmz/zen/#/homepage" target="wsc_cp4aiopsconsole">https://cpd-cp4aiops.apps.ocpaocp.dmz/zen/#/homepage</a>.</strong>  Click through any security warnings.</p>
+<p>Select <em>OpenShift Authentication</em> from the <em>Log in with</em> dropdown, then click the blue <em>Log in</em> button.</p>
+<p><img alt="cp4waiops-login" src="../../images/cp4waiops-login.png" /></p>
+</li>
+<li>
+<p><strong>When presented with three choices in a <em>Log in with</em> box, as shown below, select the <em>ldap-ats-wscdmz-wfwsldapcl01</em> option, and then log in with your usual lab credentials (i.e., <em>usernn</em>).</strong> </p>
+<p><img alt="cp4aiops-login-ldap" src="../../images/cp4aiops-login-ldap2.png" /></p>
+<p>You may be prompted to authorize access to a service account in the <em>cp4aiops</em> project. Select <strong>Allow selected permissions</strong> if prompted.</p>
+<p>While navigating the Cloud Pak for AIOps platform, you might be prompted to take a tour of certain features. Select "Maybe Later" - you can come back to these tours later if you wish by clicking the "Tours" button in the top-right of the page.</p>
+<p>After successful login, and dismissing any offers to take a tour, you should be at your Cloud Pak for AIOps home page, which should look like this:</p>
+<p><img alt="cp4waiops-homepage2" src="../../images/cp4waiops-homepage2.png" /></p>
+<p>When you first log in to Cloud Pak for AIOps, you are taken to the homepage that displays the most important information that you have access to. Depending on your credentials, different "widgets" will appear for you to see and act on.</p>
+</li>
+</ol>
+<h4 id="aiops-insights">AIOps Insights<a class="headerlink" href="#aiops-insights" title="Permanent link">&para;</a></h4>
+<ol>
+<li>
+<p><strong>Navigate to <em>Operate-&gt;AIOps Insights</em> from the left-side menu.  It may be necessary to click the "hamburger-menu" button in the top-left corner of the page to bring the left-side menu into view.</strong></p>
+<p>You should reach a page similar to this:</p>
+<p><img alt="aiops-insights" src="../../images/aiops-insights.png" /></p>
+<p>On this page, you see visualizations of two of the main goals of Cloud Pak for AIOps - improving problem resolution time (Mean Time to Restore) and reducing the "signal-to-noise ratio" from all of the monitoring data produced within your enterprise IT environment (Reduction of Noise).</p>
+<p><details>
+<summary>Mean Time to Restore (MTTR) (click to expand)</summary></p>
+<p>The total time period from the start of a failure to resolution. For business-critical applications, downtime of just a few minutes can mean thousands or millions of dollars' worth of lost revenue. IBM Cloud Pak for AIOps reduces MTTR by using AI-driven insights to recommend actions and runbooks to solve the issue more quickly.
+</details></p>
+<p><details>
+<summary>Noise Reduction (click to expand)</summary></p>
+<p>The concept of reducing the number of IT events and alerts that your operations staff must evaluate, speeding recovery time and reducing employee fatigue.</p>
+<p>In the image above, over 300,000 events were narrowed down to 10,000 alerts, which were further narrowed down to 431 incidents. These incidents are what IT Operations staff needs to evaluate and remediate either through manual processes, or by building automation for repeating incidents.</p>
+</details>
+<p>Next, you will take a look at where all of these events are coming from.</p>
+</li>
+</ol>
+<h4 id="integrations">Integrations<a class="headerlink" href="#integrations" title="Permanent link">&para;</a></h4>
+<ol>
+<li>
+<p><strong>From the left-side menu, navigate to <em>Define -&gt; Integrations</em>.</strong></p>
+<p>You should see a page like this:</p>
+<p><img alt="integrations2" src="../../images/integrations2.png" /></p>
+<p>Two of these integrations are <em>inbound</em>- Cloud Pak for AIOps is receiving data from the sources configured in the integration.</p>
+<ul>
+<li>Cloud Pak for AIOps is receiving events, metrics, and topology data from the <em>Instana</em> integration to the Instana server that you are using in this lab.  The metrics received from Instana can be fed as training data to <em>Metric Anomaly Detection</em> machine learning algorithms, although this is not covered in the lab.</li>
+<li>Log messages from select OpenShift applications are being forwarded to an <a href="https://www.elastic.co/elastic-stack" target="_new">ELK server</a> and are then ingested by Cloud Pak for AIOps via the <em>ELK</em> integration. Cloud Pak for AIOps can use these log messages as training data to <em>Log Anomaly Detection</em> machine learning algorithms.</li>
+</ul>
+<p>Two of these integrations are <em>outbound</em>- the server configured in the integration receives commands from <em>Actions</em> that are part of <em>Runbooks</em>.</p>
+<ul>
+<li>The <em>SSH</em> integration is used for runbook actions that need to log in to a remote system via SSH and issue commands from that remote system.</li>
+<li>The <em>Ansible Automation Controller</em> integration is used for runbook actions that invoke Ansible playbooks that reside on the <a href="https://www.redhat.com/en/technologies/management/ansible" target="_new">Ansible Automation Platform</a> server defined in this integration.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Don't worry that the SSH and Ansible Automation Controller integrations indicate an error in the <em>Integration status</em> column.  This occurs due to the permissions granted to your <em>usernn</em> roles within Cloud Pak for AIOps.  They do show up as working when this page is viewed by a Cloud Pak for AIOps administrator.</p>
+</div>
+<p>Two of these integrations come into play for this lab.
+Topology data has come from the Instana integration.
+Also, coming from the Instana integration will be the Instana event that Cloud Pak for AIOps will turn into an alert, and then an incident.</p>
+<p>You will resolve the incident using a runbook whose actions use the SSH integration to issue commands to correct the problem you introduced earlier.</p>
+</li>
+</ol>
+<h4 id="resource-management">Resource Management<a class="headerlink" href="#resource-management" title="Permanent link">&para;</a></h4>
+<ol>
+<li>
+<p><strong>From the left-side menu, navigate to <em>Operate -&gt; Resource Management</em>.</strong></p>
+<p>You should see a screen similar to what is shown below:</p>
+<p><img alt="resource-management-2b" src="../../images/resource-management-2b.png" /></p>
+<p>You can define your own Applications to Cloud Pak for AIOps, but in our lab environment, Cloud Pak for AIOps has created all of the applications from information it received via the Instana integration.</p>
+</li>
+<li>
+<p><strong>Search for and click the link for your <em>usernn-project</em> application.</strong></p>
+<p>You will see a page like this:</p>
+<p><img alt="resource-managementb" src="../../images/resource-managementb.png" /></p>
+<p>You now have a scoped view of the resources associated with the your sample <em>Fruit</em> application.  You can zoom in on the topology to better see the individual application components and relationships.</p>
+</li>
+</ol>
+<h4 id="automations">Automations<a class="headerlink" href="#automations" title="Permanent link">&para;</a></h4>
+<ol>
+<li>
+<p><strong>From the left-side menu, navigate to <em>Operate -&gt; Automations</em></strong>. If there are any filters applied, you can clear them by clicking the filter button and unchecking any that are applied.</p>
+<p><img alt="automations-policies" src="../../images/automations-policies.png" /></p>
+<p>The automation tools - policies, runbooks, and actions - help you resolve incidents quickly by setting up and enabling an automatic response as situations arise.</p>
+<p>Policies are rules that contain condition and action sets. They can be triggered to automatically promote events to alerts, reduce noise by grouping alerts into an incident, and assign runbooks to remediate alerts.</p>
+</li>
+<li>
+<p><strong>Find the policy named <em>Promote userNN postgresql alert to incident</em>, and click it. In the panel that pops in from the right, click the <em>Specification</em> tab.</strong></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Use the search bar to quickly find the <em>Promote userNN postgresql alert to incident</em> policy</p>
+</div>
+<p>After selecting the <em>Specification</em> tab the  panel that popped in from the right that should look like this:</p>
+<p><img alt="runbook-specification" src="../../images/runbook-specification.png" /></p>
+<p>This policy looks for alerts that satisfy both of these two conditions:</p>
+<ol>
+<li>
+<p>The value of the <code>alert.summary</code> field within the alert contains either <code>project/nodejs-user</code> or <code>product/postgresql-user</code>.</p>
+</li>
+<li>
+<p>The value of the <code>alert.summary</code> field within the alert also contains either <code>Available replicas is less than desired replicas</code> or <code>Pod containers are not ready</code>.</p>
+</li>
+</ol>
+<p>The policy also states what should happen when the policy finds a matching alert. In this case, it will promote the alert to an incident if an incident does not already exist for any related alerts.</p>
+</li>
+<li>
+<p><strong>Navigate to the <em>Runbooks</em> tab on the <em>Automations</em> page.</strong></p>
+<p>You should see a page like this:</p>
+<p><img alt="automations-runbooksb" src="../../images/automations-runbooksb.png" /></p>
+<p><em>Runbooks</em> automate procedures, thereby increasing the efficiency of IT operations processes. Runbooks are made up of one or more actions that can be taken against a target environment through either ssh commands (which is what this lab uses), HTTP calls, or Ansible playbooks.</p>
+<p>You can also switch to the <em>Activities</em> tab under the <em>Runbooks</em> tab to see all of the previous runbook usage.</p>
+</li>
+<li>
+<p><strong>Navigate to the <em>Actions</em> tab on the <em>Automations</em> page.</strong></p>
+<p><em>Actions</em> in runbooks are the collection of steps grouped into a single automated entity. An action improves runbook efficiency by automatically performing procedures and operations.</p>
+</li>
+<li>
+<p><strong>Find and click the <em>Fix userNN postgresql environment variable</em> action in the list of actions, and then click the <em>Content</em> tab of the panel that pops in from the right.</strong></p>
+<p>The contents of the action should look like this:</p>
+<p><img alt="action-erroneousb" src="../../images/action-erroneousb.png" /></p>
+<p>This action enables CP4AIOps to <em>ssh</em> to a target server and run the proper <em>oc</em> (OpenShift CLI) commands to solve the issue.</p>
+<p>Runbooks and actions can be associated with incidents so that whenever an incident is created that meets certain criteria, a runbook can be recommended, or even automatically run.  Although the problem you introduced in this lab is very simple and could easily have been corrected by having the runbook run automatically, we set things up so that you will run the runbook yourself.</p>
+</li>
+</ol>
+<h3 id="fixing-the-error-in-your-application">Fixing the error in your application<a class="headerlink" href="#fixing-the-error-in-your-application" title="Permanent link">&para;</a></h3>
+<p>Typically in Cloud Pak for AIOPs, a large number of events ingested by Cloud Pak for AIOPs are reduced to a smaller number of alerts, which are then reduced to an even smaller number of incidents. IT Operators and Site Reliability Engineers will typically work from the <em>Incidents</em> view.</p>
+<ol>
+<li>
+<p><strong>In the left-side menu, navigate to <em>Operate -&gt; Incidents</em>.</strong></p>
+<p>You'll get a page like this:</p>
+<p><img alt="incident-new" src="../../images/incidents.png" /></p>
+<p>Depending on what alerts are triggered at the time you go through this lab, the current incidents will look different.</p>
+<p>Incidents are where the IT operators and administrators should focus their attention to either manually close incidents as they are generated or build actions and runbooks in order to remediate incidents automatically as they appear. </p>
+</li>
+<li>
+<p><strong>Find the incident that begins with <em>userNN-project/nodejs-userNN</em>, where <em>userNN</em> is your user number, and select the link in the <em>Title</em> column.</strong></p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>Please be careful to select your correct incident. There is nothing stopping you from accidentally selecting another user's incident and closing it in the coming steps.</p>
+</div>
+<p>You will see a page that similar to this:</p>
+<p><img alt="incident-view" src="../../images/incident-viewb.png" /></p>
+<p>The incident contains many pieces of information that can be used to more quickly remediate issues.</p>
+<ul>
+<li><strong>(1)</strong> <em>Probable cause alerts</em> - Cloud Pak for AIOps attempts to derive the root fault component, and the full scope of components that are affected by an incident</li>
+<li><strong>(2)</strong> <em>Topology</em> - provides a view of the affected components so IT Operators can see the incident in context. </li>
+<li><strong>(3)</strong> <em>Assignees</em> - you can either manually assign incidents to team members to resolve, or Cloud Pak for AIOps can assign people or teams automatically if a policy is configured to do so. Our lab's policy does not assign this incident to anyone.</li>
+<li><strong>(4)</strong> <em>Impacted Applications</em> - any business applications that Cloud Pak for AIOps identifies as impacted by the incident</li>
+<li><strong>(5)</strong> <em>Source</em> - this lists the policy that promoted an alert to an incident. You looked at this policy a few minutes ago in the lab.</li>
+<li><strong>(6)</strong> <em>Runbooks for selected alert</em> - an alert can have a runbook assigned to it by a policy. <em>Note:</em> Although not covered in this lab, Cloud Pak for AIOps can also suggest, based on how it is has been trained in its machine learning algorithms, recommended runbooks for remediating incidents.</li>
+<li><strong>(7)</strong> In addition to the policy that promoted an alert to an incident, a different policy, listed here and named <em>Assign runbook to userNN postgresql incident</em>, was used to assign a runbook to the alert.  That is, the policy listed in <em>(5)</em> in this list is what caused Cloud Pak for AIOps to create an incident from the alert, but it was the policy listed here in <em>(7)</em> that suggested a runbook for the alert.</li>
+</ul>
+</li>
+<li>
+<p><strong>Back in the Cloud Pak for AIOps incident near the bottom of the page, click the Run button (1) associated with the <em>Fix userNN postgresql (ssh)</em> runbook.</strong></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You may need to scroll down within the incident to find the runbook associated with the incident.</p>
+</div>
+<p><img alt="cp4aiops-incident-run-runbook" src="../../images/cp4aiops-incident-run-runbook.png" /></p>
+<p>After clicking the <em>Run</em> button you should see a page like this:</p>
+<p><img alt="runbook-new" src="../../images/runbook-new.png" /></p>
+<p>This <em>runbook</em> is made up of four separate <em>actions</em>. Each action is a bash command issued through an SSH connection. It is not required that all commands be of the same type. For example, one step could be a bash command while the second could be an Ansible playbook or an API call.</p>
+<ul>
+<li>In <em>Step 1</em> the runbook will log into the OpenShift cluster from a Linux server via an SSH connection. (In our lab environment, this server is running Red Hat Enterprise Linux (RHEL) in a Linux guest running under z/VM, although these details are transparent to you.)</li>
+<li>In <em>Step 2</em> it will check if the <em>POSTGRESQL_DATABASE</em> environment variable is properly set.</li>
+<li>In <em>Step 3</em> it will remediate the error. The remediation for this error is to edit the Postgresql deployment's environment variable to the correct database name of <em>my_data-usernn</em>, rather than <em>my_data-usernn-error</em>.</li>
+<li>Finally, in <em>Step 4</em> it will check the environment variable again to confirm that it was properly changed.</li>
+</ul>
+</li>
+<li>
+<p><strong>Prior to running the actions, begin by entering four parameter values in the <em>Details</em> pane on the right- those for <em>user</em>, <em>ocp_username</em>, <em>ocp_password</em>, and <em>ocp_project</em>.</strong></p>
+<p>This table describes the six parameters used by the runbook, including the two you should not change and the four you need to change to provide values unique to you.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>target</td>
+<td>192.168.176.61</td>
+<td>DO NOT CHANGE- this is the IP address of the server defined in the SSH integration</td>
+</tr>
+<tr>
+<td><strong>user</strong></td>
+<td><em>usernn</em>, where <em>nn</em> is your unique number</td>
+<td>a userid on the target server that can be a target of the SSH command</td>
+</tr>
+<tr>
+<td><strong>$ocp_username</strong></td>
+<td><em>usernn</em>, same as the <em>user</em> parameter</td>
+<td>the userid used to log in to OCP in the runbook, also used to construct the desired name of the environment variable to be corrected by the runbook</td>
+</tr>
+<tr>
+<td><strong>$ocp_password</strong></td>
+<td>your OpenShift password</td>
+<td>found on the <a href="../../console-access/" target="wsc_envaccess">Environment Access</a> page (the same one you've been using throughout the lab).</td>
+</tr>
+<tr>
+<td><strong>$ocp_project</strong></td>
+<td><em>usernn-project</em>, where <em>nn</em> is your unique number</td>
+<td>the runbook targets its OCP CLI commands to this project</td>
+</tr>
+<tr>
+<td>$ocp_server</td>
+<td><a href="https://api.atsocpd1.dmz:6443">https://api.atsocpd1.dmz:6443</a></td>
+<td>DO NOT CHANGE- this is the URL for the OCP API server which receives the OCP CLI commands that the runbook invokes</td>
+</tr>
+</tbody>
+</table>
+<p>Your screen should look like this after you have filled in the parameter values. </p>
+<p><img alt="cp4aiops-runbook-parameters" src="../../images/cp4aiops-runbook-parameters.png" /></p>
+</li>
+<li>
+<p><strong>After populating the variables, click <em>Start Runbook</em> at the bottom of the page.</strong></p>
+<p>After you click <em>Start Runbook</em>, the <em>Run</em> button for the first step in the runbook will be enabled.</p>
+<p><img alt="cp4aiops-runbook-step1-ready" src="../../images/cp4aiops-runbook-step1-ready.png" /></p>
+</li>
+<li>
+<p><strong>Click the <em>Run</em> button for <em>Step 1: Log in to OpenShift</em> to start the first action in the runbook.</strong></p>
+<p>Wait for <em>Step 1</em> to complete. Your screen should look similar to this:</p>
+<p><img alt="cp4aiops-runbook-step1-success" src="../../images/cp4aiops-runbook-step1-success.png" /></p>
+</li>
+<li>
+<p>Once <em>Step 1</em> has completed successfully, <strong>click the <em>Next step</em> button in order to enable the <em>Run</em> button for <em>Step 2: Check userNN postgresql environment variable</em></strong>.</p>
+</li>
+<li>
+<p><strong>Complete each remaining step in the runbook</strong>, clicking <em>Run</em> and waiting for the step to complete sucessfully before clicking <em>Next step</em>.</p>
+<p>If the output of <em>Step 4</em> includes the response <em>POSTGRESQL_DATABASE=my_data-usernn</em>, like in the screen shot below, then the application issue should be fixed.</p>
+<p><img alt="runbook-completeb" src="../../images/runbook-completeb.png" /></p>
+<p>Since it is the last step in the Runbook, at the end of <em>Step 4: Check userNN postgresql environment variable</em>, you will have a <em>Complete</em> button to click instead of a <em>Next Step</em> button. </p>
+<p>You can give the runbook a 1-5 star rating, leave a comment, and mark that it worked. This feature allows to provide feedback to the automation engineers and AI algorithms so that the runbook can be improved.</p>
+</li>
+<li>
+<p>Go back to your browser tab that has the error page for your <em>Fruit</em> application and <strong>Click the reload icon</strong>. Now that the problem has been fixed, you should see your application again:</p>
+<p><img alt="app-working2" src="../../images/app-working2.png" /></p>
+<p>In Cloud Pak for AIOps, you can manually mark your incident as <em>resolved</em>,  or you can let Cloud Pak for AIOps identify that the error has been fixed and it will close the incident automatically.</p>
+</li>
+</ol>
+<h3 id="ai-model-management">AI Model Management<a class="headerlink" href="#ai-model-management" title="Permanent link">&para;</a></h3>
+<p>During the lab you worked with an incident that was generated by user-defined policies. This allowed the lab instructors the control necessary to ensure that the steps in this lab can be consistently repeatable for all students.</p>
+<p>This section will show you the AI algorithms that come with Cloud Pak for AIOps.  These algorithms provide the ability for trained models to provide noise-reducing capabilities-  for example, by reducing the number of alerts created, or assigning multiple alerts to a single incident. The AI algorithms can be used to create policies that you can deploy, allowing AI to be involved in creating alerts and incidents in addition to the user-defined policies that you just worked with.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For lab purposes, we actually have disabled some of the features that would be left on in a production environment.  As an example, in the lab we have multiple lab students each breaking their own instance of the <em>Fruit</em> application in the same way, at about the same time. By default, Cloud Pak for AIOps would recognize the similarity of each student's alerts and would group multiple students' alerts into the same incident.  We therefore disabled the out-of-the-box policy that would group these alerts into a single incident, so that each student receives, and can work with, their own incident without affecting other students. </p>
+</div>
+<ol>
+<li>
+<p><strong>From the left-side menu, navigate to Operate -&gt; AI Model Management.</strong></p>
+<p><img alt="ai-model-management" src="../../images/ai-model-management.png" /></p>
+<p>At the top of this page are models that you can set up to train with your own data, which is typically provided via your integrations. (Our lab system has Instana and ELK defined, although you only took advantage of the Instana integration in this lab.)</p>
+<p>The bottom of the page has some models that come pre-trained by IBM.</p>
+<p>If you click any of the tiles on this page, a pop-in panel from the right provides more information about that algorithm and the benefit it provides.</p>
+</li>
+</ol>
+<h2 id="wrapping-up">Wrapping Up<a class="headerlink" href="#wrapping-up" title="Permanent link">&para;</a></h2>
+<p>In this lab, you have seen some of the capabilities of Instana and Cloud Pak for AIOps and how they can observe and manage IBM Z applications and infrastructure.</p>
+<p>With Instana and IBM Cloud Pak for AIOps, you can keep your applications up and running, meeting your SLAs, and when incidents do arise, you can remediate them quickly.</p>
+<p>We encourage you to look through the references below and reach out to the <a href="mailto:silliman@us.ibm.com">lab author</a> if you would like to see or learn more.</p>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://www.ibm.com/products/instana" target="wsc_instanadoc">Instana Product Page</a></li>
+<li><a href="https://www.ibm.com/docs/en/instana-observability/current" target="wsc_instanadoc">Instana Documentation</a></li>
+<li>
+<p><a href="https://www.ibm.com/docs/en/instana-observability/current?topic=configuring-monitoring-supported-technologies" target="wsc_instanadoc">Instana Supported Technologies</a></p>
+</li>
+<li>
+<p><a href="https://www.ibm.com/products/cloud-pak-for-aiops" target="wsc_cp4aiopsdoc">IBM Cloud Pak for AIOps Product Page</a></p>
+</li>
+<li><a href="https://www.ibm.com/docs/en/cloud-paks/cloud-pak-aiops" target="wsc_cp4aiopsdoc">IBM Cloud Pak for AIOps Documentation</a></li>
+<li><a href="https://www.ibm.com/docs/en/cloud-paks/cloud-pak-aiops/4.4.1?topic=integrations-integration-types" target="wsc_cp4aiopsdoc">IBM Cloud Pak for AIOps Integrations</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../../workshop-architecture/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Lab Architecture">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Lab Architecture
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2024 IBM Z Washington Systems Center
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["search.suggest", "search.highlight", "navigation.instant", "navigation.instant.progress", "navigation.footer"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="../../js/print-site.js"></script>
+      
+    
+  </body>
+</html>
