@@ -2,38 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://ibm-wsc.github.io/aiops-z-SHARE/</loc>
-         <lastmod>2025-08-14</lastmod>
-    </url>
-    <url>
-         <loc>https://ibm-wsc.github.io/aiops-z-SHARE/access/</loc>
-         <lastmod>2025-08-14</lastmod>
+         <lastmod>2025-08-18</lastmod>
     </url>
     <url>
          <loc>https://ibm-wsc.github.io/aiops-z-SHARE/console-access/</loc>
-         <lastmod>2025-08-14</lastmod>
+         <lastmod>2025-08-18</lastmod>
     </url>
     <url>
          <loc>https://ibm-wsc.github.io/aiops-z-SHARE/techzone-access/</loc>
-         <lastmod>2025-08-14</lastmod>
+         <lastmod>2025-08-18</lastmod>
     </url>
     <url>
          <loc>https://ibm-wsc.github.io/aiops-z-SHARE/workshop-architecture/</loc>
-         <lastmod>2025-08-14</lastmod>
-    </url>
-    <url>
-         <loc>https://ibm-wsc.github.io/aiops-z-SHARE/labs/cp4aiops-lab/</loc>
-         <lastmod>2025-08-14</lastmod>
-    </url>
-    <url>
-         <loc>https://ibm-wsc.github.io/aiops-z-SHARE/labs/instana-lab/</loc>
-         <lastmod>2025-08-14</lastmod>
+         <lastmod>2025-08-18</lastmod>
     </url>
     <url>
          <loc>https://ibm-wsc.github.io/aiops-z-SHARE/labs/share-lab/</loc>
-         <lastmod>2025-08-14</lastmod>
-    </url>
-    <url>
-         <loc>https://ibm-wsc.github.io/aiops-z-SHARE/labs/turbonomic-lab/</loc>
-         <lastmod>2025-08-14</lastmod>
+         <lastmod>2025-08-18</lastmod>
     </url>
 </urlset>
