@@ -1,0 +1,72 @@
+site_name: AIOps with IBM Z and LinuxONE
+repo_url: https://github.com/ibm-wsc/aiops-z-SHARE/
+site_url: https://ibm-wsc.github.io/aiops-z-SHARE/
+edit_uri: edit/main/docs
+
+nav:
+    - Home: 'index.md'
+    - TechZone Environment Access: 'techzone-access.md'
+    - Lab Consoles Access: 'console-access.md'
+    - Lab Environment: 'workshop-architecture.md'
+    - Lab: labs/share-lab.md
+
+
+theme: 
+  name: material
+  palette:
+    scheme: default
+    # primary: blue
+    font:
+      text: IBM Plex Sans
+      code: IBM Plex Mono
+  features: 
+    - search.suggest # adds text completion to search bar
+    - search.highlight
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.footer
+  favicon: images/CP4AIOps-logo.svg
+  logo: images/CP4AIOps-logo.svg
+
+extra_css:
+  - stylesheets/extra.css
+
+copyright: Copyright © 2024 IBM Z Washington Systems Center
+
+plugins:
+#  - enumerate-headings:
+#      toc_depth: 6
+#      strict: true
+  - search
+  # - htmlproofer:
+  #     ignore_urls:
+  #       - mailto:*
+  #       - https://unit0-wsc.lcsins01.dmz
+  - autolinks
+  - print-site:
+      add_to_navigation: true
+
+markdown_extensions:
+  - admonition
+  - codehilite
+  - footnotes
+  - pymdownx.arithmatex
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tabbed
+  - pymdownx.tilde
+  - attr_list
+  - toc:
+      permalink: true
